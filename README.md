@@ -31,13 +31,15 @@ from cash_register import CashRegister
 
 register = CashRegister(20)
 register.add_item("macbook air", 1000)
-register.add_item("usb-c hub", 25, 2)
 register.apply_discount()
-# After the discount, the total comes to $840.
+# After the discount, the total comes to $800.
 
-register.void_last_transaction()
-print(register.items)  # ['macbook air']
-print(register.total)  # 800
+cart = CashRegister()
+cart.add_item("apple", 0.99)
+cart.add_item("tomato", 1.76)
+cart.void_last_transaction()
+print(cart.total)   # 0.99
+print(cart.items)   # ['apple']
 ```
 
 `quantity` defaults to `1`. Each unit is stored in `items`, and each `add_item` call is stored in `previous_transactions` as `{"item", "price", "quantity"}`.
